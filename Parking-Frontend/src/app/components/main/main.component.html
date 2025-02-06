@@ -1,23 +1,31 @@
 <div class="main-container">
-  <h1>Main - Parqueadero</h1>
+  <div class="overlay"></div>
 
-  <div class="stats-container">
-    <mat-card class="stat-card">
-      <h3>Vehículos Estacionados</h3>
-      <p>{{ totalVehiculos }}</p>
-    </mat-card>
+  <div class="main-content">
+    <header class="header">
+      <h1>Panel de Control - Parqueadero</h1>
+    </header>
 
-    <mat-card class="stat-card">
-      <h3>Ingresos Estimados</h3>
-      <p>${{ ingresosTotales }}</p>
-    </mat-card>
+    <section class="stats-container">
+      <mat-card class="stat-card">
+        <h3>Vehículos Estacionados</h3>
+        <p>{{ totalVehiculos }}</p>
+      </mat-card>
 
-    <mat-card class="stat-card">
-      <h3>Vehículo más antiguo</h3>
-      <p>{{ vehiculoMasAntiguo || 'N/A' }}</p>
-    </mat-card>
+      <mat-card class="stat-card">
+        <h3>Ingresos Estimados</h3>
+        <p>${{ ingresosTotales }}</p>
+      </mat-card>
+
+      <mat-card class="stat-card">
+        <h3>Vehículo más antiguo</h3>
+        <p>{{ vehiculoMasAntiguo || 'N/A' }}</p>
+      </mat-card>
+    </section>
+
+    <section class="actions-container">
+      <button mat-raised-button color="primary" (click)="irAVehiculos()">Gestionar Vehículos</button>
+      <button mat-raised-button color="warn" (click)="logout()">Cerrar Sesión</button>
+    </section>
   </div>
-
- <button mat-raised-button color="primary" (click)="irAVehiculos()">Gestionar Vehículos</button>
-  <button mat-raised-button color="warn" (click)="logout()">Cerrar Sesión</button>
 </div>
