@@ -1,0 +1,13 @@
+<h2 mat-dialog-title class="title">Registrar Salida</h2>
+<div mat-dialog-content class="dialog-content">
+  <p>¿Desea registrar la salida del vehículo <strong>{{ data.placa }}</strong>?</p>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Número de Factura (opcional)</mat-label>
+    <input matInput [(ngModel)]="numeroFactura" placeholder="Ejemplo: 12345678" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="confirmarSalida()">Confirmar</button>
+</div>
