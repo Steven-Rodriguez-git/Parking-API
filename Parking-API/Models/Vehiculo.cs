@@ -8,7 +8,7 @@ namespace ParkingAPI.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "La placa es obligatoria")]
-        [StringLength(6, ErrorMessage = "La placa no puede tener más de 10 caracteres")] 
+        [StringLength(6, ErrorMessage = "La placa no puede tener más de 6 caracteres")] 
         public string Placa { get; set; }
 
         [Required(ErrorMessage = "El tipo de vehículo es obligatorio")]

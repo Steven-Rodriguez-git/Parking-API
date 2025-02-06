@@ -1,1 +1,23 @@
-<p>main works!</p>
+<div class="main-container">
+  <h1>Main - Parqueadero</h1>
+
+  <div class="stats-container">
+    <mat-card class="stat-card">
+      <h3>Vehículos Estacionados</h3>
+      <p>{{ totalVehiculos }}</p>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <h3>Ingresos Estimados</h3>
+      <p>${{ ingresosTotales }}</p>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <h3>Vehículo más antiguo</h3>
+      <p>{{ vehiculoMasAntiguo || 'N/A' }}</p>
+    </mat-card>
+  </div>
+
+ <button mat-raised-button color="primary" (click)="irAVehiculos()">Gestionar Vehículos</button>
+  <button mat-raised-button color="warn" (click)="logout()">Cerrar Sesión</button>
+</div>

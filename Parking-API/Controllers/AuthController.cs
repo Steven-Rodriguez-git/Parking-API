@@ -30,7 +30,8 @@ namespace ParkingAPI.Controllers
 
         private string GenerateJwtToken(string username)
         {
-            var key = Encoding.UTF8.GetBytes(_config["Jwt:Key"]);
+            var key = Environment.GetEnvironmentVariable("JWT_KEY") ?? _config["Jwt:Key"];
+            var keyBytes = Encoding.UTF8.GetBytes(key);
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, username)
@@ -42,7 +43,7 @@ namespace ParkingAPI.Controllers
                 Expires = DateTime.UtcNow.AddHours(2),
                 Issuer = _config["Jwt:Issuer"],
                 Audience = _config["Jwt:Audience"],
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(keyBytes), SecurityAlgorithms.HmacSha256)
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
