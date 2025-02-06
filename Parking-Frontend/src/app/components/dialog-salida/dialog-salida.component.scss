@@ -1,0 +1,22 @@
+.title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}

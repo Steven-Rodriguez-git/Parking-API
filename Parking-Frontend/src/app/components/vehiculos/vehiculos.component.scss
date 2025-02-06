@@ -51,3 +51,17 @@ table {
   width: 100%;
   max-width: 1000px;
 }
+
+.actions-container {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  justify-content: center;
+}
+
+button {
+  padding: 14px 24px;
+  font-size: 20px;
+  font-weight: bold;
+  min-width: 220px;
+}

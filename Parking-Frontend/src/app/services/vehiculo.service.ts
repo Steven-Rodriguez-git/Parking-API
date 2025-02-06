@@ -31,6 +31,14 @@ export class VehiculoService {
     });
   }
 
+  calcularSalida(id: number, numeroFactura: string | null): Observable<any> {
+    return this.http.post<any>(
+      `${this.apiUrl}/calcular-salida/${id}`,
+      { numeroFactura },
+      { headers: this.getAuthHeaders() }
+    );
+  }
+
   eliminarVehiculo(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`, {
       headers: this.getAuthHeaders(),

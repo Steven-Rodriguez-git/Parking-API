@@ -14,9 +14,9 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
-  totalVehiculos: number = 0;
-  ingresosTotales: number = 0;
-  vehiculoMasAntiguo: string = '';
+  vehiculosHoy: number = 0;
+  vehiculosActuales: number = 0;
+  ingresosHoy: number = 0;
 
   private vehiculoService = inject(VehiculoService);
   private authService = inject(AuthService);
@@ -27,19 +27,21 @@ export class MainComponent {
   }
 
   cargarEstadisticas() {
-    this.vehiculoService.getVehiculos().subscribe((data) => {
-      this.totalVehiculos = data.length;
-      this.ingresosTotales = data.reduce(
-        (total, vehiculo) => total + this.calcularTarifa(vehiculo),
-        0
-      );
+    this.vehiculoService.getVehiculos().subscribe((vehiculos) => {
+      const hoy = new Date().setHours(0, 0, 0, 0);
 
-      if (data.length > 0) {
-        const vehiculoAntiguo = data.reduce((prev, curr) =>
-          new Date(prev.horaIngreso) < new Date(curr.horaIngreso) ? prev : curr
-        );
-        this.vehiculoMasAntiguo = vehiculoAntiguo.placa;
-      }
+      this.vehiculosHoy = vehiculos.filter(
+        (v) => new Date(v.horaIngreso).setHours(0, 0, 0, 0) === hoy
+      ).length;
+
+      this.vehiculosActuales = vehiculos.filter((v) => !v.horaSalida).length;
+
+      this.ingresosHoy = vehiculos
+        .filter(
+          (v) =>
+            v.horaSalida && new Date(v.horaSalida).setHours(0, 0, 0, 0) === hoy
+        )
+        .reduce((sum, v) => sum + (v.valorPagado || 0), 0);
     });
   }
 
@@ -51,9 +53,8 @@ export class MainComponent {
     return Math.round(tiempoEnMinutos * tarifaPorMinuto);
   }
 
-
   irAVehiculos() {
-    console.log('🔄 Redirigiendo a /vehiculo...'); // 🔹 Mensaje en la consola
+    console.log('🔄 Redirigiendo a /vehiculo...');
     this.router.navigate(['/vehiculos']);
   }
   logout() {

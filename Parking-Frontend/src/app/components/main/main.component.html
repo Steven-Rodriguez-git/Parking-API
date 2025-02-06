@@ -7,25 +7,27 @@
     </header>
 
     <section class="stats-container">
-      <mat-card class="stat-card">
-        <h3>Vehículos Estacionados</h3>
-        <p>{{ totalVehiculos }}</p>
-      </mat-card>
+     <mat-card class="stat-card">
+      <h3>🚗 Vehículos Estacionados Hoy</h3>
+      <p>{{ vehiculosHoy }}</p>
+    </mat-card>
 
-      <mat-card class="stat-card">
-        <h3>Ingresos Estimados</h3>
-        <p>${{ ingresosTotales }}</p>
-      </mat-card>
+    <mat-card class="stat-card">
+      <h3>🅿️ Vehículos Actualmente Estacionados</h3>
+      <p>{{ vehiculosActuales }}</p>
+    </mat-card>
 
-      <mat-card class="stat-card">
-        <h3>Vehículo más antiguo</h3>
-        <p>{{ vehiculoMasAntiguo || 'N/A' }}</p>
-      </mat-card>
+    <mat-card class="stat-card">
+      <h3>💰 Ingresos Estimados</h3>
+      <p>${{ ingresosHoy.toFixed(2) }}</p>
+    </mat-card>
     </section>
+
 
     <section class="actions-container">
       <button mat-raised-button color="primary" (click)="irAVehiculos()">Gestionar Vehículos</button>
       <button mat-raised-button color="warn" (click)="logout()">Cerrar Sesión</button>
     </section>
+
   </div>
 </div>
