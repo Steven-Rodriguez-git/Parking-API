@@ -1,20 +1,53 @@
+
 .vehiculos-container {
-  max-width: 800px;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
+  min-height: 100vh;
+ background: url('https://images.unsplash.com/photo-1604063155785-ee4488b8ad15?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
 }
 
-mat-form-field {
-  display: block;
+
+.vehiculos-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  margin-bottom: 10px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
-button {
-  margin-top: 10px;
+.vehiculos-content {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 1100px;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vehiculos-form {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
 }
 
 table {
   width: 100%;
-  margin-top: 20px;
+  max-width: 1000px;
 }
