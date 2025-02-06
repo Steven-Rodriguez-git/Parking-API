@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using ParkingAPI.Data;
 using ParkingAPI.Models;
@@ -7,6 +8,7 @@ namespace ParkingAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class VehiculoController : ControllerBase
     {
         private readonly ParkingDbContext _context;
