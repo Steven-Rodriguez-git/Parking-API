@@ -37,6 +37,32 @@ namespace ParkingAPI.Controllers
             return CreatedAtAction(nameof(GetVehiculos), new { id = vehiculo.Id }, vehiculo);
         }
 
+        [HttpGet("filtrar-por-fecha")]
+        public async Task<ActionResult<IEnumerable<VehiculoDTO>>> ObtenerVehiculosPorRangoDeTiempo(
+    [FromQuery] DateTime fechaInicio,
+    [FromQuery] DateTime fechaFin)
+        {
+            if (fechaInicio > fechaFin)
+            {
+                return BadRequest("La fecha de inicio no puede ser mayor a la fecha de fin.");
+            }
+
+            var vehiculos = await _context.Vehiculos
+                .Where(v => v.HoraIngreso >= fechaInicio && v.HoraIngreso <= fechaFin)
+                .Select(v => new VehiculoDTO
+                {
+                    Placa = v.Placa,
+                    Tipo = v.Tipo,
+                    TiempoParqueo = v.HoraSalida.HasValue
+                        ? (v.HoraSalida.Value - v.HoraIngreso).TotalMinutes
+                        : (DateTime.UtcNow - v.HoraIngreso).TotalMinutes,
+                    ValorPagado = v.ValorPagado ?? 0
+                })
+                .ToListAsync();
+
+            return Ok(vehiculos);
+        }
+
         [HttpPost("calcular-salida/{id}")]
         public async Task<IActionResult> CalcularSalida(int id, [FromBody] SalidaRequest request)
         {

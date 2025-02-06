@@ -1,4 +1,12 @@
+Enviroment Conexion BASE DE DATOS  AZURE
+(La primera consulta tardará al ser la version  gratuita mientras se reinicia el servidor)
+
 $env:AZURE_SQL_CONNECTIONSTRING="Server=tcp:proyectos-nerterick.database.windows.net,1433;Initial Catalog=ParkingAPIDB;Persist Security Info=False;User ID=nerterick;Password=`$7#j6YMfVi874fz;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+
+Enviroment para el  JWT_KEY 
+
 $env:JWT_KEY="DQoJ2g0NMQaZyH9W4lvUb7J/NqR0OjN+5cz07mY9J5o="
 
-[System.Environment]::SetEnvironmentVariable("AZURE_SQL_CONNECTIONSTRING", "Server=tcp:proyectos-nerterick.database.windows.net,1433;Initial Catalog=ParkingAPIDB;Persist Security Info=False;User ID=nerterick;Password=`$7#j6YMfVi874fz;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;", "User")
+Conexion prueba al sistema
+usuario: admin
+Password: admin123
